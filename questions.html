@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Questions Form</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+  }
+  .container {
+    max-width: 600px;
+    margin: 0 auto;
+  }
+  .question {
+    margin-bottom: 20px;
+  }
+  .question label {
+    display: block;
+    margin-bottom: 10px;
+  }
+</style>
+</head>
+<body>
+<div class="container">
+  <h2>Questions Form</h2>
+  <div id="userDetails"></div>
+  <form id="questionsForm">
+    <div class="question">
+      <p>Question 1: What is your favorite color?</p>
+      <label><input type="checkbox" name="q1_option1"> Red</label>
+      <label><input type="checkbox" name="q1_option2"> Blue</label>
+      <label><input type="checkbox" name="q1_option3"> Green</label>
+      <label><input type="checkbox" name="q1_option4"> Yellow</label>
+      <label><input type="checkbox" name="q1_option5"> Other</label>
+    </div>
+    <div class="question">
+      <p>Question 2: What is your favorite animal?</p>
+      <label><input type="checkbox" name="q2_option1"> Dog</label>
+      <label><input type="checkbox" name="q2_option2"> Cat</label>
+      <label><input type="checkbox" name="q2_option3"> Bird</label>
+      <label><input type="checkbox" name="q2_option4"> Fish</label>
+      <label><input type="checkbox" name="q2_option5"> Other</label>
+    </div>
+
+    <div class="question">
+      <p>Question 3: What is your favorite season?</p>
+      <label><input type="checkbox" name="q3_option1"> Spring</label>
+      <label><input type="checkbox" name="q3_option2"> Summer</label>
+      <label><input type="checkbox" name="q3_option3"> Fall</label>
+      <label><input type="checkbox" name="q3_option4"> Winter</label>
+      <label><input type="checkbox" name="q3_option5"> None</label>
+    </div>
+    <div class="question">
+      <p>Question 4: What is your favorite hobby?</p>
+      <label><input type="checkbox" name="q4_option1"> Reading</label>
+      <label><input type="checkbox" name="q4_option2"> Traveling</label>
+      <label><input type="checkbox" name="q4_option3"> Cooking</label>
+      <label><input type="checkbox" name="q4_option4"> Sports</label>
+      <label><input type="checkbox" name="q4_option5"> Other</label>
+    </div>
+    <div class="question">
+      <p>Question 5: What is your favorite food?</p>
+      <label><input type="checkbox" name="q5_option1"> Pizza</label>
+      <label><input type="checkbox" name="q5_option2"> Sushi</label>
+      <label><input type="checkbox" name="q5_option3"> Burger</label>
+      <label><input type="checkbox" name="q5_option4"> Salad</label>
+      <label><input type="checkbox" name="q5_option5"> Other</label>
+    </div>
+    <div class="question">
+      <p>Question 6: What is your favorite drink?</p>
+      <label><input type="checkbox" name="q6_option1"> Water</label>
+      <label><input type="checkbox" name="q6_option2"> Coffee</label>
+      <label><input type="checkbox" name="q6_option3"> Tea</label>
+      <label><input type="checkbox" name="q6_option4"> Juice</label>
+      <label><input type="checkbox" name="q6_option5"> Other</label>
+    </div>
+    <div class="question">
+      <p>Question 7: What is your favorite movie genre?</p>
+      <label><input type="checkbox" name="q7_option1"> Action</label>
+      <label><input type="checkbox" name="q7_option2"> Comedy</label>
+      <label><input type="checkbox" name="q7_option3"> Drama</label>
+      <label><input type="checkbox" name="q7_option4"> Horror</label>
+      <label><input type="checkbox" name="q7_option5"> Other</label>
+    </div>
+    <div class="question">
+      <p>Question 8: What is your favorite music genre?</p>
+      <label><input type="checkbox" name="q8_option1"> Rock</label>
+      <label><input type="checkbox" name="q8_option2"> Pop</label>
+      <label><input type="checkbox" name="q8_option3"> Jazz</label>
+      <label><input type="checkbox" name="q8_option4"> Classical</label>
+      <label><input type="checkbox" name="q8_option5"> Other</label>
+    </div>
+    <div class="question">
+      <p>Question 9: What is your favorite sport?</p>
+      <label><input type="checkbox" name="q9_option1"> Football</label>
+      <label><input type="checkbox" name="q9_option2"> Basketball</label>
+      <label><input type="checkbox" name="q9_option3"> Soccer</label>
+      <label><input type="checkbox" name="q9_option4"> Tennis</label>
+      <label><input type="checkbox" name="q9_option5"> Other</label>
+    </div>
+    <div class="question">
+      <p>Question 10: What is your favorite subject?</p>
+      <label><input type="checkbox" name="q10_option1"> Math</label>
+      <label><input type="checkbox" name="q10_option2"> Science</label>
+      <label><input type="checkbox" name="q10_option3"> History</label>
+      <label><input type="checkbox" name="q10_option4"> Art</label>
+      <label><input type="checkbox" name="q10_option5"> Other</label>
+    </div>
+
+    <button type="submit">Submit</button>
+  </form>
+</div>
+
+<script>
+  
+  function getUrlParams() {
+    const params = {};
+    const queryString = window.location.search.substring(1);
+    const paramPairs = queryString.split('&');
+    paramPairs.forEach(pair => {
+      const [key, value] = pair.split('=');
+      params[key] = decodeURIComponent(value);
+    });
+    return params;
+  }
+
+
+  function displayUserDetails() {
+    const params = getUrlParams();
+    const userDetailsDiv = document.getElementById('userDetails');
+    userDetailsDiv.innerHTML = `
+      <p><strong>Name:</strong> ${params.name}</p>
+      <p><strong>Enroll Number:</strong> ${params.enroll}</p>
+      <p><strong>Batch Number:</strong> ${params.batch}</p>
+    `;
+  }
+
+  document.getElementById('questionsForm').addEventListener('submit', function(event) {
+    event.preventDefault();
+    alert('Answers submitted successfully!');
+  });
+
+  window.onload = function() {
+    displayUserDetails();
+  };
+</script>
+</body>
+</html>
